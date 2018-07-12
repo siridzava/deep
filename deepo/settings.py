@@ -25,7 +25,10 @@ SECRET_KEY = 'f2lc)0p+*wcl8=7at5#ns&rm$)q^wh)3qlpt%_1j6x#g6+mey#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+		'167.99.34.127',
+		'bsnsk.com',
+		]
 
 
 # Application definition
