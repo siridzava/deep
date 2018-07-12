@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> -->
+    <title>Initiative calculator</title>
+</head>
+<body onload="add_three_characters()" class="container">
+<h2>Initiative:</h2>
+<br>
+<div id="global" class="jumbotron1">
+
+</div>
+<p>
+<button id="add" type="button">Add character</button>
+<button id="sort" type="button">Fight!</button>
+</p>
+<div id='list'>
+</div>
+<script>
+function gen_id() {
+	x = Math.floor(Math.random() * (101 - 1)) + 1;
+	return x
+}
+function add_character() {
+	var new_id = gen_id()
+	var new_player =
+	`<div id="player_${new_id}">
+	<input type="text" name="charname1" placeholder="Character name">
+	<select>
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+	<option value="11">11</option>
+	<option value="12">12</option>
+	<option value="13">13</option>
+	<option value="14">14</option>
+	<option value="15">15</option>
+	<option value="16">16</option>
+	<option value="17">17</option>
+	<option value="18">18</option>
+	<option value="19">19</option>
+	<option value="20">20</option>
+	<option value="21">21</option>
+	<option value="22">22</option>
+	<option value="23">23</option>
+	<option value="24">24</option>
+	<option value="25">25</option>
+	<option value="26">26</option>
+	<option value="27">27</option>
+	<option value="28">28</option>
+	<option value="29">29</option>
+	<option value="30">30</option>
+	</select>
+	<button type="button" onclick="remove()">Remove</button>
+	<br><br>
+	</div>`
+	var stack = document.getElementById('global');
+	stack.insertAdjacentHTML('beforeend', new_player);
+}
+function remove() {
+	var node = event.target;
+  	node.parentNode.remove();
+}
+function get_values() {
+	console.log(document.getElementById("global").children);
+	var players = document.getElementById("global").children;
+	var count = players.length;
+	var guys = [];
+	for (i = 0; i < count; i++) {
+		var name = players[i].children[0].value;
+		var ini = players[i].children[1].value;
+		res = {name: name, ini: ini};
+		guys.push(res);
+	}
+	return guys;
+}
+function make_list(values) {
+	values.sort(function(a,b) {
+		return b.ini - a.ini
+	});
+	console.log(values);
+}
+function add_three_characters() {
+	add_character();
+	add_character();
+	add_character();
+}
+const sortBtn = document.getElementById('sort');
+sortBtn.addEventListener('click', sortMyArr);
+const addBtn = document.getElementById('add');
+addBtn.addEventListener('click', add_character)
+function sortMyArr() {
+	let list = document.getElementById('list')
+	// while (list.firstChild) {
+ //    list.removeChild(list.firstChild);
+	// }
+	list.innerHTML = '';
+	let arr = get_values();
+	arr.sort(function(a,b) {
+		return b.ini - a.ini
+	});
+	// const stack = document.getElementById('list');
+	arr.forEach((obj) => {
+		let para = document.createElement("p");
+		para.classList.add('listed');
+		para.innerHTML = `${obj.name}:   ${obj.ini}`
+		list.append(para)
+		// stack.insertAdjacentHTML('beforeend', list_el);
+	});
+}
+</script>
+</body>
+</html>
