@@ -2,19 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bsnsk!</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
 <nav class="navbar navbar-default">
-<div class="container">
-    <ul class="nav navbar-nav">
-        <li><a class="navbar-brand" href="{% url 'dive_in:index' %}">Main</a></li>
+    <div class="container">
+
+    <ul class="nav navbar-nav col-xs-9">
+        <li><a class="navbar-brand navbar-left" href="{% url 'dive_in:index' %}">Main</a></li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
         <li><a href="{% url 'dive_in:rp_assistant' %}">Role-play assistant</a></li>
     </ul>
+
 </div>
 </nav>
 {% block body_block %}
