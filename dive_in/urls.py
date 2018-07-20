@@ -10,4 +10,8 @@ urlpatterns = [
     path('register/', views.register, name='registration'),
     path('login/', aviews.login, name='user_login'),
     path('logout/', aviews.logout, name='logout', kwargs={'next_page': 'dive_in:rp_assistant'}),
+    path('character/', views.character, name='character'),
+    path('character/<int:pk>', views.CharacterUpdateView.as_view(), name='update'),
+    path('play/<int:pk>', views.play, name='play')
+
 ]

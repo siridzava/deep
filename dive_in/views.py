@@ -2,8 +2,11 @@ from django.shortcuts import render
 from dive_in.forms import UserForm, ProfileForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from django.contrib.auth import authenticate, login, logout
-
+from django.contrib.auth import authenticate, login
+from django.views.generic import (TemplateView, ListView,
+                                  DetailView, CreateView,
+                                  UpdateView, DeleteView)
+from dive_in.models import Character
 
 # Create your views here.
 
@@ -17,7 +20,39 @@ def initiative(request):
 
 
 def rp_assistant(request):
-    return render(request, 'dive_in/rp_assistant.html')
+    if request.user.is_authenticated:
+        characters = Character.objects.filter(user= request.user)
+        return render(request, 'dive_in/rp_assistant.html',
+                      context={'characters': characters})
+    else:
+        return render(request, 'dive_in/rp_assistant.html')
+
+
+class CharacterUpdateView(UpdateView):
+    form_class = ProfileForm
+    model = Character
+    template_name_suffix = '_form'
+
+
+def play(request, pk):
+    char = Character.objects.get(pk=pk)
+    return render(request, 'dive_in/interface.html', context={'character': char})
+
+
+def character(request):
+    if request.method == 'POST':
+        char_form = ProfileForm(data=request.POST)
+        if char_form.is_valid():
+            char = char_form.save(commit=False)
+            char.user = request.user
+            char.save()
+            return HttpResponseRedirect(reverse('dive_in:rp_assistant'))
+
+    else:
+        char_form = ProfileForm
+
+    return render(request, 'dive_in/character_form.html',
+                      {'char_form': char_form})
 
 
 def register(request):

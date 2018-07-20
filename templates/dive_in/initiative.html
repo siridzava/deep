@@ -76,7 +76,7 @@ function get_values() {
 	for (i = 0; i < count; i++) {
 		let name = players[i].children[0].value;
 		let ini = players[i].children[1].value;
-		res = {name: name, ini: ini};
+		let res = {name: name, ini: ini};
 		guys.push(res);
 	}
 	return guys;

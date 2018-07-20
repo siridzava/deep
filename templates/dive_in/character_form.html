@@ -1,0 +1,10 @@
+{% extends "dive_in/rp_base.html" %}
+
+{% block body_block %}
+    <form method="post">
+        {% csrf_token %}
+        {{ char_form.as_p }}
+        <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+
+{% endblock %}

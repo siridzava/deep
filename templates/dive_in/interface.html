@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enjoy</title>
+{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">#}
+<link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<h2><span class="tx">Your action points:</span></h2>
+<p><h1><div class="numbers" id="action_points">{{character.action_points}}</div></h1></p>
+
+</div>
+<style>
+    .numbers {
+        font-family: 'Eczar';
+        margin-left: auto;
+        margin-right: auto;
+        border: 2px solid #607D8B;
+        background: #B0BEC5;
+        padding: 15px;
+        width: fit-content;
+    }
+    h2{
+        font-family: 'Eczar';
+        text-align: center;
+    }
+</style>
+</body>
+<script>
+    ap = document.getElementById('action_points')
+    ap.addEventListener('click', function(){
+        ap.innerHTML --;
+        if (ap.innerHTML == 0) {
+            location.reload()
+        }
+    });
+
+</script>
+</html>

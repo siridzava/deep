@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from dive_in.models import UserProfile
+from dive_in.models import Character
 
 
 class UserForm(forms.ModelForm):
@@ -13,5 +13,7 @@ class UserForm(forms.ModelForm):
 
 class ProfileForm(forms.ModelForm):
     class Meta:
-        model = UserProfile
-        fields = ('character_name', 'gold', 'silver')
+        model = Character
+        fields = ('character_name', 'action_points', 'hit_points',
+                  'crit_hit_points', 'gold', 'silver')
+

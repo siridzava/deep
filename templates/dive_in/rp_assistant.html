@@ -2,9 +2,21 @@
 
 {% block body_block %}
     <div class="container">
-    <h1>Hello</h1>
-    <h2>Here you can use initiative calculator or add a character.</h2>
+    {% if user.is_authenticated %}
+    <h1>Hello, Gunslinger!</h1>
     <h3><a href="{% url 'dive_in:initiative' %}">Initiative calculator</a></h3>
+    {% if characters %}
+        <h3>Play with one of your characters:</h3>
+    {% for char in characters %}
+    <h4><a href="character/{{char.id}}">{{char.character_name}}</a></h4>
+        <a href="play/{{char.id}}">Play</a>
+    {% endfor %}
+        <h2>Or create a new one:</h2>
+    {% endif %}
+        <h3><a href="{% url 'dive_in:character' %}">Add new character</a></h3>
+        {% else %}
+        <h1>Please, log in.</h1>
+    {% endif %}
     </div>
 
 
