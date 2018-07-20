@@ -19,12 +19,11 @@
 </div>
 <script>
 function gen_id() {
-	x = Math.floor(Math.random() * (101 - 1)) + 1;
-	return x
+	return Math.floor(Math.random() * (101 - 1)) + 1;
 }
 function add_character() {
-	var new_id = gen_id()
-	var new_player =
+	let new_id = gen_id();
+	let new_player =
 	`<div id="player_${new_id}">
 	<input type="text" name="charname1" placeholder="Character name">
 	<select>
@@ -61,22 +60,22 @@ function add_character() {
 	</select>
 	<button type="button" onclick="remove()">Remove</button>
 	<br><br>
-	</div>`
-	var stack = document.getElementById('global');
+	</div>`;
+	let stack = document.getElementById('global');
 	stack.insertAdjacentHTML('beforeend', new_player);
 }
 function remove() {
-	var node = event.target;
+	let node = event.target;
   	node.parentNode.remove();
 }
 function get_values() {
 	console.log(document.getElementById("global").children);
-	var players = document.getElementById("global").children;
-	var count = players.length;
-	var guys = [];
+	let players = document.getElementById("global").children;
+	let count = players.length;
+	let guys = [];
 	for (i = 0; i < count; i++) {
-		var name = players[i].children[0].value;
-		var ini = players[i].children[1].value;
+		let name = players[i].children[0].value;
+		let ini = players[i].children[1].value;
 		res = {name: name, ini: ini};
 		guys.push(res);
 	}
@@ -96,9 +95,9 @@ function add_three_characters() {
 const sortBtn = document.getElementById('sort');
 sortBtn.addEventListener('click', sortMyArr);
 const addBtn = document.getElementById('add');
-addBtn.addEventListener('click', add_character)
+addBtn.addEventListener('click', add_character);
 function sortMyArr() {
-	let list = document.getElementById('list')
+	let list = document.getElementById('list');
 	// while (list.firstChild) {
  //    list.removeChild(list.firstChild);
 	// }
@@ -111,7 +110,7 @@ function sortMyArr() {
 	arr.forEach((obj) => {
 		let para = document.createElement("p");
 		para.classList.add('listed');
-		para.innerHTML = `${obj.name}:   ${obj.ini}`
+		para.innerHTML = `${obj.name}:   ${obj.ini}`;
 		list.append(para)
 		// stack.insertAdjacentHTML('beforeend', list_el);
 	});
