@@ -16,6 +16,10 @@ def initiative(request):
     return render(request, 'dive_in/initiative.html')
 
 
+def rp_assistant(request):
+    return render(request, 'dive_in/rp_assistant.html')
+
+
 def register(request):
     registered = False
 
@@ -60,7 +64,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('/'))
 
             else:
                 return HttpResponse("Account is not active")

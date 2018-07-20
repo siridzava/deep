@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-<div class="jumbotron">
+{% extends 'dive_in/rp_base.html' %}
 
+{% block body_block %}
+
+<body>
+<div class="container">
+<div class="jumbotron">
 <h2>Please, login:</h2>
 
 {% if form.errors %}
@@ -18,11 +16,14 @@
          {{ form.as_p }}
         <input type="submit" class="btn btn-primary" value="login">
         <input type="hidden" name="next" value="{{next}}">
-
+        <a class="btn btn-primary" href="{% url 'dive_in:registration' %}">register</a>
 
     </form>
 
 
 </div>
+</div>
+
 </body>
-</html>
+
+{% endblock %}

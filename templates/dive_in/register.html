@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'dive_in/rp_base.html' %}
+
+{% block body_block %}
 
 <div class="jumbotron">
     {% if registered %}
@@ -15,11 +11,10 @@
     <form enctype="multipart/form-data" method="POST">
     {% csrf_token %}
     {{ user_form.as_p }}
-    {{ profile_form.as_p }}
     <input type="submit" value="Register">
     </form>
     {% endif %}
 
 </div>
-</body>
-</html>
+
+{% endblock %}
