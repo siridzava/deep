@@ -8,8 +8,9 @@
     {% if characters %}
         <h3>Play with one of your characters:</h3>
     {% for char in characters %}
-    <h4><a href="character/{{char.id}}">{{char.character_name}}</a></h4>
-        <a href="play/{{char.id}}">Play</a>
+    <h3><a href="play/{{char.id}}">{{char.character_name}}</a>
+        <a href="character/{{char.id}}" class="btn btn-primary">Edit</a>
+        </h3>
     {% endfor %}
         <h2>Or create a new one:</h2>
     {% endif %}
@@ -18,6 +19,11 @@
         <h1>Please, log in.</h1>
     {% endif %}
     </div>
-
+<style>
+    .btn{
+        font-size: 12px;
+        padding: 4px;
+    }
+</style>
 
 {% endblock %}
